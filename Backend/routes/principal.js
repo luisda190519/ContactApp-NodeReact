@@ -5,9 +5,9 @@ const User = require("../models/user");
 const {checkDuplicatedEmail,verifyLogin, getID} = require("../middlewares/loginAndSignUp");
 const router = express.Router();
 
-router.get("/", (req, res) => {
-    console.log(req.session.userID)
-    res.json(req.session.userID)
+router.get("/:userID", async (req, res) => {
+    const userSearched = await User.findById(req.params.userID)
+    res.json(userSearched.populate("contacts"))
 });
 
 router.get("/login", (req, res) =>{
@@ -19,7 +19,7 @@ router.post("/login", async (req, res) =>{
 
     if (await verifyLogin(person)) {
         req.session.userID = await getID(person);
-        res.json(true)
+        await res.json(req.session.userID)
     } else {
         res.json(false);
     }
@@ -44,7 +44,7 @@ router.post("/register", async (req, res) =>{
         const newUser = new User(person);
         await newUser.save()
         req.session.userID = await getID(person);
-        res.json(true)
+        res.json(req.session.userID)
     } else {
         res.json(false);
     }

@@ -56,7 +56,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(
         <Navbar/>
         <BrowserRouter>
             <Routes>
-                <Route path="/" element={<Home />} />
+                <Route path="/:userID" element={<Home />} />
                 <Route
                     path="/login"
                     element={<Login login={inputs.slice(4, 6)} name="login" />}

@@ -37,7 +37,7 @@ const Form = function (props) {
             .post("http://localhost:5173/" + action, data)
             .then((response) =>
                 response.data 
-                    ? navigate("/")
+                    ? navigate("/" + response.data )
                     : setMessage("Email or password incorrect")
             )
             .catch((err) => {

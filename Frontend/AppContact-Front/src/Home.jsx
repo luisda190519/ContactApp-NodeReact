@@ -19,7 +19,8 @@ const Home = function (props) {
             .catch((err) => {
                 console.error(err);
             });
-        setSessionID(datos);
+        await setSessionID(datos);
+        await console.log(datos)
     };
 
     sessionActive()
