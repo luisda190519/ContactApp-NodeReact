@@ -20,6 +20,7 @@ const Register = function (props) {
         setSessionID(datos);
     };
 
+    sessionActive();
     if (!sessionID) {
         return <Form register={props.register} name={props.name} />
     }

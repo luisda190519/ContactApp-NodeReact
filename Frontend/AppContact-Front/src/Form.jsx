@@ -36,7 +36,7 @@ const Form = function (props) {
         axios
             .post("http://localhost:5173/" + action, data)
             .then((response) =>
-                response.data === "Login succesfully"
+                response.data 
                     ? navigate("/")
                     : setMessage("Email or password incorrect")
             )

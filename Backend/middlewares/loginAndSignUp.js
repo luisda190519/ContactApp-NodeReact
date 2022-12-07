@@ -25,6 +25,5 @@ module.exports.verifyLogin = async function (user) {
 
 module.exports.getID = async function (user) {
     const userSearched = await User.findOne({ email: user.email });
-
-    return userSearched.ObjectID;
+    return userSearched.id;
 };

@@ -4,6 +4,7 @@ import Login from "./Login";
 import Register from "./Register";
 import Contact from "./Contact";
 import Home from "./Home";
+import Navbar from "./navbar";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 const inputs = [
@@ -52,6 +53,7 @@ const inputs = [
 
 ReactDOM.createRoot(document.getElementById("root")).render(
     <React.StrictMode>
+        <Navbar/>
         <BrowserRouter>
             <Routes>
                 <Route path="/" element={<Home />} />

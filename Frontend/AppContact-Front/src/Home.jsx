@@ -3,6 +3,8 @@ import axios from "axios";
 import { useState } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import Form from "./Form";
+import MessageCard from "./MessageCard"
+
 
 const Home = function (props) {
     const [sessionID, setSessionID] = useState(false);
@@ -20,10 +22,11 @@ const Home = function (props) {
         setSessionID(datos);
     };
 
+    sessionActive()
     if (sessionID) {
-        return <Form contact={props.contact} name={props.name} />
+        //return <Form contact={props.contact} name={props.name} />
     }else{
-        return <MessageCard message="You must first log in to your account to add contacts." link="/login" />
+        return <MessageCard message="You must first log in to your account to see your contacts." link="/login" />
     }
     
 };

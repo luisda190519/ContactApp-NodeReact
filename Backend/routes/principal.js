@@ -6,6 +6,7 @@ const {checkDuplicatedEmail,verifyLogin, getID} = require("../middlewares/loginA
 const router = express.Router();
 
 router.get("/", (req, res) => {
+    console.log(req.session.userID)
     res.json(req.session.userID)
 });
 
@@ -17,10 +18,10 @@ router.post("/login", async (req, res) =>{
     const person = {email: req.body.email, password: req.body.password};
 
     if (await verifyLogin(person)) {
-        req.session.userID = getID(person, req.params.role);
-        res.json("Login succesfully")
+        req.session.userID = await getID(person);
+        res.json(true)
     } else {
-        res.json("Email or password incorrect");
+        res.json(false);
     }
 })
 
@@ -42,10 +43,10 @@ router.post("/register", async (req, res) =>{
     if (await checkDuplicatedEmail(person)) {
         const newUser = new User(person);
         await newUser.save()
-        req.session.userID = getID(person, req.params.role);
-        return res.json("Login succesfully")
+        req.session.userID = await getID(person);
+        res.json(true)
     } else {
-        res.json("Email alredy exist");
+        res.json(false);
     }
 })
 

@@ -20,6 +20,7 @@ const Contact = function (props) {
         setSessionID(datos);
     };
 
+    sessionActive();
     if (sessionID) {
         return <Form contact={props.contact} name={props.name} />
     }else{

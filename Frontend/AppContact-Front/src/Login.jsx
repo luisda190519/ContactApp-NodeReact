@@ -20,6 +20,7 @@ const Login = function (props) {
         setSessionID(datos);
     };
 
+    sessionActive();
     if (!sessionID) {
         return <Form login={props.login} name={props.name} />
     }
