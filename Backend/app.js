@@ -31,14 +31,6 @@ app.use(cors(corsOPtions));
 app.use(session(sessionConfig));
 app.use(cookieParser());
 
-//Middlewares config
-app.use(function (req, res, next) {
-    if (req.session.userID === undefined) {
-        req.session.userID = false;
-    }
-    next();
-});
-
 //Routes
 app.use("/", principalRoutes);
 app.use("/contact", contactRoutes);

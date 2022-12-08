@@ -12,7 +12,7 @@ const Register = function (props) {
     const sessionActive = async function () {
         let datos = null;
         await axios
-            .get("http://localhost:5173" + location.pathname)
+            .get("http://localhost:5173/session")
             .then((response) => (datos = response.data))
             .catch((err) => {
                 console.error(err);
@@ -22,7 +22,7 @@ const Register = function (props) {
 
     sessionActive();
     if (!sessionID) {
-        return <Form register={props.register} name={props.name} />
+        return <Form register={props.register} name={props.name} action={location.pathname} />
     }
     
     return navigate("/")

@@ -7,7 +7,7 @@ const Navbar = function () {
 
     return (
         <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
-            <a className="navbar-brand ml-2" href="#">
+            <a className="navbar-brand mx-4" href="#">
                 Contact App
             </a>
             <button className="navbar-toggler" type="button">

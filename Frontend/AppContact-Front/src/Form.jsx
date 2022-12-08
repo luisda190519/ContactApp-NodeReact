@@ -30,14 +30,14 @@ const Form = function (props) {
         );
     });
 
-    const handleSubmit = function (e, action) {
+    const handleSubmit = async function (e, action) {
         e.preventDefault();
 
-        axios
-            .post("http://localhost:5173/" + action, data)
+        await axios
+            .post("http://localhost:5173" + props.action, data)
             .then((response) =>
                 response.data 
-                    ? navigate("/" + response.data )
+                    ? navigate("/home/" + response.data )
                     : setMessage("Email or password incorrect")
             )
             .catch((err) => {

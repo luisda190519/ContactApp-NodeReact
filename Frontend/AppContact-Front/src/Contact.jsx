@@ -12,7 +12,7 @@ const Contact = function (props) {
     const sessionActive = async function () {
         let datos = null;
         await axios
-            .get("http://localhost:5173" + location.pathname)
+            .get("http://localhost:5173/session")
             .then((response) => (datos = response.data))
             .catch((err) => {
                 console.error(err);
@@ -22,7 +22,7 @@ const Contact = function (props) {
 
     sessionActive();
     if (sessionID) {
-        return <Form contact={props.contact} name={props.name} />
+        return <Form contact={props.contact} name={props.name} action={location.pathname} />
     }else{
         return <MessageCard message="You must first log in to your account to add contacts." link="/login" />
     }

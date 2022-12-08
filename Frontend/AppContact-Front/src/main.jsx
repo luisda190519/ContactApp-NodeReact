@@ -56,7 +56,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(
         <Navbar/>
         <BrowserRouter>
             <Routes>
-                <Route path="/:userID" element={<Home />} />
+                <Route path="/home/:userID" element={<Home />} />
                 <Route
                     path="/login"
                     element={<Login login={inputs.slice(4, 6)} name="login" />}
@@ -68,7 +68,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(
                     }
                 />
                 <Route
-                    path="/contact"
+                    path="/contact/:userID"
                     element={
                         <Contact contact={inputs.slice(0, 2).concat(inputs.slice(4, 5)).concat(inputs.slice(6))} name="contact" />
                     }

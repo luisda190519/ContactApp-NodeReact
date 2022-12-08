@@ -13,6 +13,10 @@ const contactSchema = new mongoose.Schema({
     },
     email: String,
     profilePic: String,
+    owner:{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "User",
+    }
 });
 
 module.exports = mongoose.model("Contact", contactSchema);
