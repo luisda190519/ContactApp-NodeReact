@@ -26,4 +26,12 @@ router.post("/:userID", async (req, res) => {
     res.json(newContact.id)
 });
 
+router.get("/:userID/edit/:contactID", (req, res) => {
+    res.json(req.session.userID);
+});
+
+router.get("/:userID/delete/:contactID", (req, res) => {
+    res.json(req.session.userID);
+});
+
 module.exports = router;
