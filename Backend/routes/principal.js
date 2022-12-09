@@ -68,11 +68,12 @@ router.post("/register", async (req, res) => {
 });
 
 router.get("/logout", (req, res) => {
+    userID = false;
+    req.session.destroy();
     res.json(req.session.userID);
 });
 
 router.post("/logout", (req, res) => {
-    req.session.destroy();
     res.redirect("/login");
 });
 
