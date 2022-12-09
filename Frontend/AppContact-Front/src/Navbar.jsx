@@ -5,6 +5,17 @@ import { useState } from "react";
 const Navbar = function () {
     const [sessionID, setSessionID] = useState(false);
 
+    const handleSubmit = async function(){
+        e.preventDefault();
+        await axios
+            .post("http://localhost:5173/logout")
+            .then(response => navigate("/login")
+            )
+            .catch((err) => {
+                console.error(err);
+            });
+    }
+
     return (
         <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
             <a className="navbar-brand mx-4" href="#">
@@ -20,17 +31,17 @@ const Navbar = function () {
                             Login
                         </a>
                     </li>
-                    ), (
+                    
                     <li className="nav-item active">
                         <a className="nav-link" href="/register">
                             Register
                         </a>
                     </li>
-                    <li className="nav-item active">
-                        <a className="nav-link" href="/logout">
-                            Register
-                        </a>
-                    </li>
+                    <form className="nav-link"
+                        onSubmit={(e) => {
+                            handleSubmit(e);
+                        }}
+                    ><button type="submit">Logout</button></form>
                 </ul>
             </div>
         </nav>
