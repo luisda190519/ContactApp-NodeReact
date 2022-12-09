@@ -8,8 +8,17 @@ const ContactCard = function (props) {
     let location = useLocation();
     let navigate = useNavigate();
 
-    const handleClick = function (e, action, contactID) {
+    const handleGetClick = function (e, action, contactID) {
         navigate(location.pathname.replace("home", "contact") + action + contactID);
+    };
+
+    const handlePostClick = async function (e, action, contactID) {
+        e.preventDefault();
+        await axios
+            .post("http://localhost:5173" + location.pathname.replace("home", "contact") + action + contactID)
+            .catch((err) => {
+                console.error(err);
+            });
     };
 
     try {
@@ -28,12 +37,13 @@ const ContactCard = function (props) {
                         <p className="card-text">
                             Nombre: {contact.name.first} {contact.name.last}
                         </p>
+                        <p className="card-text">Number: {contact.number}</p>
                         <p className="card-text">Email: {contact.email}</p>
                         <div className="text-center">
-                            <button className="btn btn-warning mx-3" onClick={(event) => handleClick(event, "/edit", "/" + contact._id)}>
+                            <button className="btn btn-warning mx-3" onClick={(event) => handleGetClick(event, "/edit", "/" + contact._id)}>
                                 Edit
                             </button>
-                            <button className="btn btn-danger mx-3" onClick={(event) => handleClick(event, "/delete", "/" + contact._id)}>
+                            <button className="btn btn-danger mx-3" onClick={(event) => handlePostClick(event, "/delete", "/" + contact._id)}>
                                 Delete
                             </button>
                         </div>
@@ -50,7 +60,7 @@ const ContactCard = function (props) {
                 <div
                     className="card mx-4  my-4 col"
                     style={{ width: "18rem" }}
-                    onClick={(event) => handleClick(event, "", "")}
+                    onClick={(event) => handleGetClick(event, "", "")}
                 >
                     <img
                         src="https://moticeurope.com/media/catalog/product/cache/ef0b392b87b09aac7ddf3931bf54d740/1/2/12180145_r_reticle_with_crosshair_diameter_19mm_00.jpg"

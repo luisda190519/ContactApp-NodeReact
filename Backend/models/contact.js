@@ -13,6 +13,7 @@ const contactSchema = new mongoose.Schema({
     },
     email: String,
     profilePic: String,
+    number:Number,
     owner:{
         type: mongoose.Schema.Types.ObjectId,
         ref: "User",

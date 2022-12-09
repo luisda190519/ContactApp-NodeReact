@@ -28,7 +28,7 @@ const Home = function (props) {
             .get("http://localhost:5173/home/contactsApi/" + sessionID)
             .then((response) => {
                 contactos = response.data;
-                setContacts(contactos)
+                setContacts(contactos);
                 return contactos;
             })
             .catch((err) => {
@@ -40,7 +40,7 @@ const Home = function (props) {
     sessionActive();
 
     if (sessionID) {
-        while(!ShowContacts()){
+        while (!ShowContacts()) {
             //console.log("hola");
         }
         return <ContactCard contacts={contacts} />;

@@ -23,6 +23,7 @@ const Form = function (props) {
                         style={{ textAlign: "left" }}
                         name={element.name.toLowerCase()}
                         id={element.name.toLowerCase()}
+                        value={element.value}
                         onChange={handleChange}
                     />
                 </label>

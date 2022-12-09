@@ -48,6 +48,11 @@ const inputs = [
         type: "text",
         label: "Image",
     },
+    {
+        name: "Number",
+        type: "number",
+        label: "Number",
+    },
 ];
 
 
@@ -69,6 +74,12 @@ ReactDOM.createRoot(document.getElementById("root")).render(
                 />
                 <Route
                     path="/contact/:userID"
+                    element={
+                        <Contact contact={inputs.slice(0, 2).concat(inputs.slice(4, 5)).concat(inputs.slice(6))} name="contact" />
+                    }
+                />
+                <Route
+                    path="/contact/:userID/edit/:contactID"
                     element={
                         <Contact contact={inputs.slice(0, 2).concat(inputs.slice(4, 5)).concat(inputs.slice(6))} name="contact" />
                     }

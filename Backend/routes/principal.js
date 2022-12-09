@@ -28,7 +28,7 @@ router.get("/session", async (req, res) => {
 });
 
 router.get("/login", (req, res) => {
-    res.json(req.session.userID);
+    res.json(userID);
 });
 
 router.post("/login", async (req, res) => {
@@ -43,7 +43,7 @@ router.post("/login", async (req, res) => {
 });
 
 router.get("/register", (req, res) => {
-    res.json(req.session.userID);
+    res.json(userID);
 });
 
 router.post("/register", async (req, res) => {
