@@ -14,7 +14,7 @@ const Form = function (props) {
 
     const items = props[props.name].map((element, i) => {
         return (
-            <div className="mx-3" key={i}>
+            <div className="col mx-3" key={i}>
                 <label className="form-label text-start">
                     {element.label}
                     <input

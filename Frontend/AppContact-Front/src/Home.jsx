@@ -22,27 +22,28 @@ const Home = function (props) {
             });
     };
 
-    const showContacts = async function () {
+    const ShowContacts = async function () {
         let contactos = null;
         await axios
             .get("http://localhost:5173/home/contactsApi/" + sessionID)
-            .then((response) => (contactos = response.data))
+            .then((response) => {
+                contactos = response.data;
+                setContacts(contactos)
+                return contactos;
+            })
             .catch((err) => {
                 console.error(err);
                 return false;
             });
-
-        setContacts(contactos);
-        return true;
     };
 
     sessionActive();
 
     if (sessionID) {
-        console.log(showContacts())
-        if (showContacts()) {
-            return <ContactCard contacts={contacts} />;
+        while(!ShowContacts()){
+            //console.log("hola");
         }
+        return <ContactCard contacts={contacts} />;
     } else {
         return (
             <MessageCard
